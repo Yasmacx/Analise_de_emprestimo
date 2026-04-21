@@ -1,0 +1,95 @@
+while True:
+    emprestimo = input("Qual o valor do emprestimo que você deseja:  ")
+    if emprestimo.isnumeric():
+        emprestimo = int(emprestimo)
+        print("Valor valido")
+        break
+    else:
+        print("Valor invalido")
+        continue
+while True:
+    faturamento = input("Qual seu faturamento mensal da sua fundação: ")
+    if faturamento.isnumeric():
+        faturamento = int(faturamento)
+        print("Valor valido")
+        break
+    else:
+        print("Valor invalido")
+        continue
+while True:
+    historico = input("Digite seu historico/score de credito: ")
+    if historico.isnumeric():
+        historico = int(historico)
+        print("Valor valido")
+        break
+    else:
+        print("Valor invalido")
+        continue
+
+restricao = input("Sua fundação tem restrições:(com sim ou não) ")
+if restricao.lower() == "sim":
+    print("Valor valido")
+elif restricao.lower() == "não":
+    print("Valor valido")
+else:
+    print("Valor invalido, somente com sim ou não")
+while True:
+    anos = input("Quantos anos tem sua fundação: ")
+    if anos.isnumeric():
+        anos = int(anos)
+        print("Valor valido")
+        break
+    else:
+        print("Valor invalido")
+        continue
+
+setor = input("Digite seu setor: ")
+
+if anos >= 2 or setor == "Tecnologia":
+    print("Aprovado")
+else:
+    print("Emprestimo negado: Tempo insuficiente")
+    exit()
+from math import ceil
+parcela = ceil(emprestimo / 24)
+limite = faturamento * 0.3
+
+if parcela <= limite:
+    print("Aprovado")
+else:
+    print("Emprestimo negado: Parcela compromete o faturamento")
+    exit()
+if historico >= 700:
+    print("Aprovado")
+elif historico >= 500 and historico <= 700 and restricao == "não":
+    print("Aprovado")
+else:
+    print("Emprestimo negado")
+    exit()
+from math import ceil
+if setor == "Varejo":
+    garantia_minima = emprestimo * 0.5
+    print("50% do valor do emprestimo")
+else:
+    garantia_minima = emprestimo * 0.3
+    print("30% do valor do emprestimo")
+
+garantia = float(input("Qual a garantia do emprestimo? "))
+if garantia >= garantia_minima:
+    print("Aprovado")
+else:
+    print("Emprestimo negado: Garantia insuficiente")
+    exit()
+if faturamento <= 50000:
+    print("Taxa VIP: 2% de TAXA")
+    taxa = 0.02
+else:
+    print("Taxa Padrão: 5% de TAXA")
+    taxa = 0.05
+
+juros = emprestimo * taxa
+total = emprestimo + juros
+
+print("EMPRESTIMO APROVADO")
+print("Valor do total:")
+print(total)
